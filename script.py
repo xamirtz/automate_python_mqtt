@@ -13,7 +13,7 @@ def listener(event):
     # print(event.event_type)
     # print(event.path)
     # print(event.data)
-    if(len(event.data) == 2):
+    if 'name' in event.data.keys():
         print(event.data['name'] + " " + str(event.data['status']))
         if(event.data['status'] == True):
             publish.single("ON", event.data['name'], hostname="localhost")
